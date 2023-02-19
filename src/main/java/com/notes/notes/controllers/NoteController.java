@@ -1,5 +1,6 @@
-package com.notes.notes;
+package com.notes.notes.controllers;
 
+import com.notes.notes.modals.Note;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;

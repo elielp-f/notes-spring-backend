@@ -1,42 +1,43 @@
-package com.notes.notes;
+package com.notes.notes.modals;
 
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotEmpty;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
+@Table("author")
 public class User {
+    @Id
     private String id;
-    @NotNull
-    private String firstName;
-    @NotNull
-    private String lastName;
+
+    @NotEmpty
+    private String firstname;
+    @NotEmpty
+    private String lastname;
     @Email
-    @NotNull
+    @NotEmpty
     private String email;
-    @NotNull
+    @NotEmpty
     private String hash;
 
     public String getId() {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public String getFirstName() {
-        return firstName;
+        return firstname;
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        this.firstname = firstName;
     }
 
     public String getLastName() {
-        return lastName;
+        return lastname;
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        this.lastname = lastName;
     }
 
     public String getEmail() {

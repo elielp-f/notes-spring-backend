@@ -1,10 +1,10 @@
-package com.notes.notes;
+package com.notes.notes.modals;
 
 public class Note {
     private String id;
     private String title;
     private String content;
-    private String author;
+    private User author;
 
     public String getId() {
         return id;
@@ -30,11 +30,11 @@ public class Note {
         this.content = content;
     }
 
-    public String getAuthor() {
+    public User getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(User author) {
         this.author = author;
     }
 }
