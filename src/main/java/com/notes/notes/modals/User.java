@@ -1,8 +1,10 @@
 package com.notes.notes.modals;
 
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
 @Table("author")
@@ -10,14 +12,14 @@ public class User {
     @Id
     private String id;
 
-    @NotEmpty
+    @NotBlank
     private String firstname;
-    @NotEmpty
+    @NotBlank
     private String lastname;
     @Email
-    @NotEmpty
+    @NotBlank
     private String email;
-    @NotEmpty
+    @NotBlank
     private String hash;
 
     public String getId() {

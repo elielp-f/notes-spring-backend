@@ -3,10 +3,7 @@ package com.notes.notes.controllers;
 import com.notes.notes.modals.User;
 import com.notes.notes.services.UserServices;
 import jakarta.validation.Valid;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class UserController {
@@ -16,12 +13,8 @@ public class UserController {
         this.userServices = userServices;
     }
 
-    @GetMapping("/")
-    public String helloworld(){
-        return "hello world";
-    }
     @PostMapping("/signup")
-    public String signup(@RequestBody @Valid User user){
+    public String signup(@RequestBody @Valid User user) throws Exception {
         User userSaved = this.userServices.createUser(
                 user.getFirstName(),
                 user.getLastName(),
@@ -30,6 +23,23 @@ public class UserController {
         );
         return String.format("Welcome %s %s to THE NOTES your id is %s", userSaved.getFirstName(), userSaved.getLastName(), userSaved.getId());
     }
+
+    @PostMapping("/user/edit")
+    public User editUser(@RequestBody @Valid User user) throws Exception {
+         return this.userServices.editUser(
+                user.getFirstName(),
+                user.getLastName(),
+                user.getEmail(),
+                user.getHash(),
+                user.getId()
+        );
+    }
+
+    @DeleteMapping("/user/{id}")
+    public void deleteUser(@PathVariable String id){
+        this.userServices.deleteUser(id);
+    }
+
 
     @PostMapping("/login")
     public String login(@RequestBody String email, @RequestBody String password){

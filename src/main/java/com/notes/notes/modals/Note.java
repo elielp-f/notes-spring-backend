@@ -1,16 +1,30 @@
 package com.notes.notes.modals;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
+
+import java.util.UUID;
+
+@Table("note")
 public class Note {
-    private String id;
+    @Id
+    private UUID id;
+    @NotBlank
     private String title;
     private String content;
-    private User author;
 
-    public String getId() {
+    @NotNull
+    @Column("author_id")
+    private UUID author;
+
+    public UUID getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
@@ -30,11 +44,11 @@ public class Note {
         this.content = content;
     }
 
-    public User getAuthor() {
+    public UUID getAuthor() {
         return author;
     }
 
-    public void setAuthor(User author) {
+    public void setAuthor(UUID author) {
         this.author = author;
     }
 }
